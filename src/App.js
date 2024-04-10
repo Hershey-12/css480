@@ -4,10 +4,10 @@ import './App.css';
 
 function App() {
   const [interests, setInterests] = useState([
-    "anime",
-    "gym",
-    "napping",
-    "thai food"
+    "Anime",
+    "Gym",
+    "Napping",
+    "Thai Food"
   ]);
 
   const reorderList = () => {
