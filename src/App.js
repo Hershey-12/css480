@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import logo from './Harshitha.jpeg';
 import './App.css';
 
 function App() {
+  const [interests, setInterests] = useState([
+    "anime",
+    "gym",
+    "napping",
+    "thai food"
+  ]);
+
+  const reorderList = () => {
+    // Create a copy of the interests array
+    const shuffledInterests = [...interests];
+    
+    // Shuffle the array
+    for (let i = shuffledInterests.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledInterests[i], shuffledInterests[j]] = [shuffledInterests[j], shuffledInterests[i]];
+    }
+    
+    // Update the state with shuffled interests
+    setInterests(shuffledInterests);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Welcome to Harshitha Komaravelli's CSS 480 webpage</h1>
+      <p>I am a third year at the Univeristy of Washington Bothell 
+        majoring in Computer Science and Software Engineering</p>
+        <img src ={logo} alt = "logo" className = "logo" />
+      <div className = "d2">
+        <h2>Some of my interests</h2>
+        <ul className="interests">
+          {interests.map((interest, index) => (
+            <li key={index}>{interest}</li>
+          ))}
+        </ul>
+        <button className="button" onClick={reorderList}>Reorder List</button>      
+
+      </div>
     </div>
   );
 }
